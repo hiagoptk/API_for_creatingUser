@@ -6,9 +6,9 @@ class User {
 
     name: string;
 
-    admin: boolean;
-
     email: string;
+
+    admin: boolean;
 
     created_at: Date;
 
@@ -17,6 +17,7 @@ class User {
     constructor() {
         if (!this.id) {
             this.id = uuidV4();
+            this.admin = false;
         }
     }
 }
