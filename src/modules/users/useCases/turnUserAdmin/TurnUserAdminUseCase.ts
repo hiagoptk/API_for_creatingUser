@@ -13,12 +13,13 @@ class TurnUserAdminUseCase {
 
         const user = this.usersRepository.findById(user_id);
 
-        Object.assign(user, {
-            admin: true,
-            updated_at: new Date(),
-        });
+        if (!user) {
+            throw new Error("User does not exists.");
+        }
 
-        return user;
+        const updatedUser = this.usersRepository.turnAdmin(user);
+
+        return updatedUser;
     }
 }
 
