@@ -40,20 +40,12 @@ class UsersRepository implements IUsersRepository {
 
         const user = this.users.find((user) => user.id === id);
 
-        if (!user) {
-            throw new Error("User doesn't exists.");
-        }
-
         return user;
     }
 
     findByEmail(email: string): User | undefined {
         // Complete aqui
         const user = this.users.find((user) => user.email === email);
-
-        if (!user) {
-            throw new Error("User doesn't exists.");
-        }
 
         return user;
     }
