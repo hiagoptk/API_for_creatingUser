@@ -1,0 +1,97 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Desafio de introdução ao SOLID",
+        "description": "Utilizando conceitos de Arquitetura Limpa, precisei completar as rotas, useCases e Controllers utilizando SOLID com NodeJS no back-end. Desafio de nº 4 do curso Ignite da Rocketseat na trilha NodeJS. Essa documentação consiste em um desafio complementar utilizando o swagger.",
+        "version": "1.0.0",
+        "contact": {
+            "email": "hiogaptk@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "sumary": "Create  User",
+                "description": "Used to create new users in the system.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name":{
+                                        "type": "string"
+                                    },
+                                    "email":{
+                                        "type": "string"
+                                    }
+                                },
+                                "exemple": {
+                                    "name": "Name Sample",
+                                    "email": "sample@mail.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": "Created.",
+                    "400": "Email already in use."
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "sumary": "Show a user's info.",
+                "description": "Shows the informations about the user's profile.",
+                "request.params": {
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "user_id": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": "Success",
+                    "404": "User not found."
+                }
+            }
+        },
+        "/users/:user_id": {
+            "get": {
+                "tags": ["Users"],
+                "sumary": "Lists all the users.",
+                "description": "List all the users profile in the system",
+                "request.headers": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "user_id":"string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "schema":{
+                            "type": "array",
+                            "items": {
+                                "type":"object",
+                                "properties": {
+                                    "id": "string",
+                                    "name":"string",
+                                    "email":"string",
+                                    "admin": "bollean",
+                                    "created_ad": "date",
+                                    "updated_at": "date"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
